@@ -1,4 +1,5 @@
 const assert = require('assert');
+const testUtil = require('./test-util');
 
 module.exports = eva => {
   // Blocks: groups of expressions:
@@ -44,4 +45,14 @@ module.exports = eva => {
       'data'
     ]
   ), 100);
+
+  testUtil.test(eva,
+  `
+    (begin
+      (var x 10)
+      (var y 20)
+      (+ (* x 10) y)
+    )
+  `, 120);
+
 };
